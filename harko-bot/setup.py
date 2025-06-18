@@ -11,7 +11,8 @@ setup(
     url="https://github.com/eb3095/harko-bot",
     requires=[
         "openai",
-        "apscheduler"
+        "apscheduler",
+        "requests"
     ],
     keywords=["dune", "harkonnen", "propaganda", "discord", "bot", "ai", "gpt-3.5-turbo", "gpt-4", "openai", "langchain", "llm", "harkonnen", "dune bot", "dune discord bot", "harkonnen discord bot", "harkonnen bot", "dune harkonnen bot", "dune harkonnen discord bot"],
 )
