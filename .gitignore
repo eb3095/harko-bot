@@ -1,0 +1,7 @@
+build
+dist
+__pyache__
+*.pyc
+*.egg-info
+harko-bot/README
+harko-bot/LICENSE
