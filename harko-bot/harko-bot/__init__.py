@@ -605,42 +605,43 @@ def sendToDiscord(reply):
 
 
 # Entry point
-FILE = "/etc/harko-bot/config.json"
-if not os.exists(FILE):
-    FILE = "config.json"
-
-if os.path.exists(FILE):
-    with open(FILE, "r") as f:
-        try:
-            CONFIG = json.load(f)
-        except json.JSONDecodeError as e:
-            print(f"Error reading configuration file {FILE}: {e}")
-            sys.exit(255)
-else:
+if __name__ == "__main__":
     FILE = "/etc/harko-bot/config.json"
-    print(f"Configuration file {FILE} does not exist. Using default configuration.")
-    print(
-        "Please edit the file with your OpenAI key and other settings if you want to use this script."
-    )
-    try:
-        if not os.path.exists(os.path.dirname(FILE)):
-            os.makedirs(os.path.dirname(FILE))
-        with open(FILE, "w") as f:
-            json.dump(CONFIG, f, indent=4)
-    except Exception as e:
-        print(f"Failed to create configuration file {FILE}: {e}")
-        print("Trying to create locally...")
+    if not os.exists(FILE):
+        FILE = "config.json"
+
+    if os.path.exists(FILE):
+        with open(FILE, "r") as f:
+            try:
+                CONFIG = json.load(f)
+            except json.JSONDecodeError as e:
+                print(f"Error reading configuration file {FILE}: {e}")
+                sys.exit(255)
+    else:
+        FILE = "/etc/harko-bot/config.json"
+        print(f"Configuration file {FILE} does not exist. Using default configuration.")
+        print(
+            "Please edit the file with your OpenAI key and other settings if you want to use this script."
+        )
         try:
-            with open("config.json", "w") as f:
+            if not os.path.exists(os.path.dirname(FILE)):
+                os.makedirs(os.path.dirname(FILE))
+            with open(FILE, "w") as f:
                 json.dump(CONFIG, f, indent=4)
-            print("Configuration file created locally as config.json.")
         except Exception as e:
-            print(f"Failed to create local configuration file: {e}")
-    sys.exit(255)
+            print(f"Failed to create configuration file {FILE}: {e}")
+            print("Trying to create locally...")
+            try:
+                with open("config.json", "w") as f:
+                    json.dump(CONFIG, f, indent=4)
+                print("Configuration file created locally as config.json.")
+            except Exception as e:
+                print(f"Failed to create local configuration file: {e}")
+        sys.exit(255)
 
-client = OpenAI(api_key=CONFIG["openai_key"])
+    client = OpenAI(api_key=CONFIG["openai_key"])
 
-args = []
-if len(sys.argv) > 1:
-    args = sys.argv[1:]
-run(args)
+    args = []
+    if len(sys.argv) > 1:
+        args = sys.argv[1:]
+    run(args)
