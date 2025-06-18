@@ -293,7 +293,7 @@ def sendToDiscord(reply):
 # Entry point
 if __name__ == "__main__":
     # Will be in this files parent dir's parent
-    DEFAULTS_FILE = os.path.join(Path(__file__).parent, "config.json")
+    DEFAULTS_FILE = os.path.join(Path(__file__).parent, "defaults.json")
     with open(DEFAULTS_FILE, "r") as f:
         try:
             CONFIG = json.load(f)
