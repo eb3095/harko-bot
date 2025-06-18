@@ -607,13 +607,12 @@ def sendToDiscord(reply):
 # Entry point
 if __name__ == "__main__":
     FILE = "/etc/harko-bot/config.json"
-    if not os.exists(FILE):
+    if not os.path.exists(FILE):
         FILE = "config.json"
-
     if os.path.exists(FILE):
         with open(FILE, "r") as f:
             try:
-                CONFIG = json.load(f)
+                CONFIG.update(json.load(f))
             except json.JSONDecodeError as e:
                 print(f"Error reading configuration file {FILE}: {e}")
                 sys.exit(255)
