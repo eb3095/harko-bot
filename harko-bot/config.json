@@ -5,6 +5,12 @@
     "tokens": 450,
     "temperature": 0.7,
     "n": 1,
+    "all": {
+        "enabled": false,
+        "schedule": [
+            {"hour": 2}
+        ]
+    },
     "the_convert": {
         "enabled": true,
         "schedule": [

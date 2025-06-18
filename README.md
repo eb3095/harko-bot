@@ -10,7 +10,7 @@
 * 🪓 Multiple themed personas:
 
   * `The Convert`: An Atreides defector whispering bile-laced truths
-  * `Thousand Eyes`: Brutal psyops from Grigoriy Vadim
+  * `DuneWatch`: Brutal psyops from Grigoriy Vadim
   * `Propaganda`: Classic regime lies and deceit
   * `News`: Daily "Harkonnen truth" broadcasts
 * 📅 Configurable cron-like scheduling
@@ -65,7 +65,7 @@ Edit the following fields:
 
 ```bash
 python harko-bot.py --send --program=convert
-python harko-bot.py --send --program=thousand_eyes
+python harko-bot.py --send --program=dunewatch
 python harko-bot.py --send --program=news
 python harko-bot.py --send --program=propaganda
 python harko-bot.py --send --program=random
@@ -89,6 +89,8 @@ Each persona (program) has the following settings in the JSON config:
 * `schedule`: Cron-style schedule (`hour`, `minute`), if only hour is specified, its by interval
 * `personality`: The system prompt defining how the persona writes
 * `prompts`: List of prompt templates the bot will randomly select from
+
+These are overridden by "All" which will randomly chose one of the programs at random on its allotted schedule.
 
 ### Example: `The Convert`
 
